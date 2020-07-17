@@ -1,0 +1,29 @@
+plugins {
+    id 'com.github.ben-manes.versions' version '0.29.0'
+}
+
+apply plugin: 'groovy'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation 'org.spockframework:spock-core:2.0-M3-groovy-3.0'
+
+    testImplementation 'org.testcontainers:testcontainers:1.14.3'
+}
+
+test {
+    useJUnitPlatform()
+    outputs.upToDateWhen { false }
+    testLogging {
+        showStandardStreams true
+        events 'FAILED'
+        exceptionFormat 'full'
+    }
+}
+
+wrapper {
+    gradleVersion = '6.5.1'
+}
