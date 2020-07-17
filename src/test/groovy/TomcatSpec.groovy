@@ -1,13 +1,16 @@
+import com.tomtom.http.HttpClient
 import org.testcontainers.containers.GenericContainer
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static com.tomtom.http.response.ResponseCode.OK
 import static org.testcontainers.containers.BindMode.READ_ONLY
 import static org.testcontainers.containers.wait.strategy.Wait.forLogMessage
 
 class TomcatSpec extends Specification {
 
     def port = 8080
+    def http = new HttpClient()
 
     @Unroll
     def 'starts Tomcat #version with a manager application'() {
@@ -22,9 +25,9 @@ class TomcatSpec extends Specification {
         container.start()
 
         then:
-        "http://admin@${container.containerIpAddress}:${container.getMappedPort(port)}/manager/status"
-            .toURL()
-            .text
+        http.get(
+                url: "http://${container.containerIpAddress}:${container.getMappedPort(port)}/manager/status",
+                headers: [Authorization: 'Basic YWRtaW46']).statusCode == OK
 
         cleanup:
         container.stop()
