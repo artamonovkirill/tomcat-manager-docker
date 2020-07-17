@@ -30,6 +30,7 @@ class TomcatSpec extends Specification {
                 headers: [Authorization: 'Basic YWRtaW46']).statusCode == OK
 
         cleanup:
+        println container.logs
         container.stop()
 
         where:
