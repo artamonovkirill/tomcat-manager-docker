@@ -1,4 +1,4 @@
-# Tomcat Manager in Docker [![Build Status](https://travis-ci.org/artamonovkirill/tomcat-manager-docker.svg?branch=master)](https://travis-ci.org/artamonovkirill/tomcat-manager-docker)
+# Tomcat Manager in Docker [![Gradle](https://github.com/artamonovkirill/tomcat-manager-docker/actions/workflows/gradle.yml/badge.svg)](https://github.com/artamonovkirill/tomcat-manager-docker/actions/workflows/gradle.yml)
 
 This repository serves as a test, and an example of configuring Tomcat Manager for Tomcat Docker images. 
 
